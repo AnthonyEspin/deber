@@ -1,0 +1,40 @@
+{% extends './plantilla.html' %}
+{% block contenido %}
+    <div class="row ">
+        <div class="col-md-3 "> </div>
+        <div class="col-md-6 bg-light"> 
+            <h1>Actualizar actividad</h1>
+
+            <form action="/procesarEdicionCargo/{{ cargoEditar.id }}" method="post">
+                {% csrf_token %}
+
+                
+                <label for="usuario">Usuario:</label><br>
+                <input class="form-control" type="text" name="usuario" id="usuario" value="{{cargoEditar.usuario}}"><br><br>
+
+                <label for="actividad">Actividad:</label><br>
+                <input class="form-control" type="text" name="actividad" id="actividad" value="{{cargoEditar.actividad}}"><br><br>
+
+                <label for="fecha">Fecha:</label><br>
+                <input class="form-control" type="text" name="fecha" id="fecha" value="{{cargoEditar.fecha}}" ><br><br>
+
+                <label for="resultado">Resultado:</label><br>
+                <input class="form-control" type="text" name="resultado" id="resultado" value="{{cargoEditar.rersultado}}" ><br><br>
+
+                <button class="btn btn-warning" type="submit">
+                    <i class="fa fa-pen"></i>
+                    Editar</button>
+                <br>
+                <a class="btn btn-outline-danger" href="/">
+                    <i class="fa fa-times"></i>
+                    Cancelar</a>
+            </form>
+            
+
+
+        </div>
+        <div class="col-md-3 "> </div>
+       
+     
+    </div>
+{% endblock %}

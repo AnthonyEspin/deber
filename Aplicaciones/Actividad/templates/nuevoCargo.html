@@ -1,0 +1,76 @@
+{% extends './plantilla.html' %}
+{% block contenido %}
+    <div class="row ">
+        <div class="col-md-3 "> </div>
+        <div class="col-md-6 bg-light"> 
+            <h1>Nuevo Cargo</h1>
+
+            <form action="/guardarCargo"method="post" id="frm_nuevo_cargo"method="post">
+                {% csrf_token %}
+                
+                <label for="usuario">Usuario:</label><br>
+              <input class="form-control" type="text" name="usuario" id="usuario"><br><br>
+
+                <label for="actividad">Actividad:</label><br>
+                <input class="form-control" type="text" name="actividad" id="actividad"><br><br>
+
+                <label for="fecha">Fecha:</label><br>
+                <input class="form-control" type="text" name="fecha" id="fecha"><br><br>
+
+                <label for="resultado">Resultado:</label><br>
+                <input class="form-control" type="text" name="resultado" id="resultado"><br><br>
+
+                <button class="btn btn-success" type="submit">Guardar</button>
+                <br>
+                <a class="btn btn-outline-danger" href="/">Cancelar</a>
+            </form>
+            
+
+
+        </div>
+        <div class="col-md-3 "> </div>
+       
+     
+    </div>
+
+    <!--envever codigo javascript/jquery dentro del html-->
+    <script>
+       $("#frm_nuevo_cargo").validate({
+        rules:{
+            "usuario":{
+                required:true
+            },
+            "actividad":{
+                required:true 
+            },
+            "fecha":{
+                required:true 
+            },
+            "resultado":{
+                required:true 
+            }
+
+        },
+        messages:{
+            "usuario":{
+                required:"El campo Usuario es obligatorio"
+            },
+            "actividad":{
+                required:"La actividad es obligatoria"
+            },
+            "fecha":{
+                required:"Porfavor Ingrese la fecha"
+            },
+            "resultado":{
+                required:"Este campo es obligatorio"
+            }
+
+        }
+       });
+    </script>
+
+    
+{% endblock %}
+
+
+

@@ -1,0 +1,71 @@
+{% extends './plantilla.html' %}
+{% block contenido %}
+<br>
+<h1></h1>
+<h1>Listado de actividades</h1>
+<a href="/nuevoCargo" class="btn btn-primary">Agregar actividad</a>
+
+    Agregar actividad
+</a>
+
+<table class="table table-borde
+    table-striped table-hover" >
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>USUARIO</th>
+            <th>ACTIVIDAD</th>
+            <th>FECHA</th>
+            <th>RESULTADO</th>
+            <th>ACCIONES</th>
+        </tr>
+    </thead>
+    <tbody>
+        <script>
+            //Swal.fire("SweetAlert2 is working!");
+            function eliminarCargo(id){
+                Swal.fire({
+                    title: "CONFIRMACION",
+                    text: "¿ ESTAS SEGURO DE ELIMINAR EL CARGO DE FORMA PERMANENTE",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Si, Deseo Eliminar!"
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href="/eliminarCargo/"+id
+                    }
+                });
+
+            }
+                    
+        </script>
+        {% for cargoTemporal in cargos %}
+        <tr>
+            <td>{{ cargoTemporal.id }}</td>
+            <td>{{ cargoTemporal.usuario }}</td>
+            <td>{{ cargoTemporal.actividad }}</td>
+            <td>{{ cargoTemporal.fecha }}</td>
+            <td>{{ cargoTemporal.resultado }}</td>
+            <td>
+                <a href="editarCargo/{{cargoTemporal.id}}" class="btn btn-outline-warning">
+                    <i class ="fa fa-pen"> </i>
+                </a>
+                <a href="#"
+                onclick = "eliminarCargo('{{cargoTemporal.id }}');"
+
+                class="btn btn-outline-danger">
+                    <i class ="fa fa-trash"> </i>
+                </a>
+            </td>
+        </tr>
+ 
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
+
+<br><br><br><br><br><br> 
+
